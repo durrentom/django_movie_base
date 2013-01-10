@@ -1,0 +1,19 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<h1>List of all Movies</h1>
+<div class="row">
+{% for movie in movies %}
+    <div class="span5">
+    	<a href="/movie/{{ movie.slug }}">
+    		<img class="img-polaroid" src="{{ STATIC_URL }}data/{{ movie.picture }}" alt="">
+    	</a>
+	    	<h4>{{ movie.title }}</h2>
+	    	<h5>{{movie.year}} <a href="/director/{{movie.director.name}}" title=""><i>{{ movie.director.forename }} {{movie.director.name}}</i></a></h4>
+	    	<p>{{ movie.synopsis }}</p>
+	    	<a href="/movie/{{ movie.slug }}" class="btn btn-info">See details</a>
+    </div>
+{% endfor %}
+</div>
+{% endblock content %}

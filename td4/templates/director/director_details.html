@@ -1,0 +1,15 @@
+{% extends "layout/base.html" %}
+{% load comments %}
+
+{% block content %}
+
+<div id="details">
+	<h2>{{ director.forename }} {{ director.name }}</h2>
+	{% render_comment_list for director %}
+	{% get_comment_count for director as comment_count %}
+
+	<p>This director has {{ comment_count }} comments.</p>
+
+	{% render_comment_form for director %}
+</div>
+{% endblock content %}

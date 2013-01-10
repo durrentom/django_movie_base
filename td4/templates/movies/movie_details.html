@@ -1,0 +1,25 @@
+{% extends "layout/base.html" %}
+{% load comments %}
+
+{% block content %}
+
+<div class="row">
+	<div class="span3">
+		<img class="img-polaroid" src="{{ STATIC_URL }}data/{{ movie.picture }}" alt="" />	
+	</div>
+	<div class="span7">
+		<h1>{{ movie.title }}</h1>
+		<p class="lead">{{movie.year}} <i>{{ movie.director.forename }} {{movie.director.name}}</i></p>
+		<p>{{ movie.synopsis }}</p>
+	</div>
+</div>
+<div class="row">
+	<div class="span10">
+		{% get_comment_count for movie as comment_count %}
+		<p>This movie has {{ comment_count }} comments.</p>
+		{% render_comment_list for movie %}
+		{% render_comment_form for movie %}
+	</div>
+</div>
+
+{% endblock content %}
