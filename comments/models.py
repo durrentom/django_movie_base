@@ -1,7 +1,7 @@
 from django.db import models
 from movies.models import Movie
 
-# Create your models here.
+# Comment model
 class Comment(models.Model):
 	author = models.CharField(max_length=100)
 	mail = models.EmailField()
